@@ -22,9 +22,6 @@ public class AuthService {
     }
 
     public ResponseEntity<ResponseDto> register(UserDto userDTO) {
-        if (userDTO.getPassword().length() < 8)
-            throw new AuthException(AuthException.AuthErrorTypeEnum.WEAK_PASSWORD, "A senha deve ter pelo menos 8 caracteres.");
-
         if (userRepository.existsByEmail(userDTO.getEmail()))
             throw new AuthException(AuthException.AuthErrorTypeEnum.EMAIL_DUPLICATED, "Email já cadastrado.");
 

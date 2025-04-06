@@ -3,6 +3,7 @@ package com.fastForm.core.controllers;
 import com.fastForm.core.Dto.ResponseDto;
 import com.fastForm.core.Dto.UserDto;
 import com.fastForm.core.services.AuthService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,7 +21,7 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<ResponseDto> register(@RequestBody UserDto userDTO) {
+    public ResponseEntity<ResponseDto> register(@Valid @RequestBody UserDto userDTO) {
         return authService.register(userDTO);
     }
 

@@ -15,14 +15,12 @@ public class AuthException extends RuntimeException {
     public HttpStatus getHttpStatusByType() {
         return switch (errorType) {
             case EMAIL_DUPLICATED -> HttpStatus.CONFLICT;
-            case WEAK_PASSWORD -> HttpStatus.BAD_REQUEST;
             case USER_NOT_FOUND -> HttpStatus.NOT_FOUND;
         };
     }
 
     public enum AuthErrorTypeEnum {
         EMAIL_DUPLICATED, //
-        WEAK_PASSWORD, //
         USER_NOT_FOUND
     }
 
