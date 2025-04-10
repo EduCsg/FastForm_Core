@@ -1,5 +1,6 @@
 package com.fastForm.core.controllers;
 
+import com.fastForm.core.Dto.LoginRequestDto;
 import com.fastForm.core.Dto.ResponseDto;
 import com.fastForm.core.Dto.UserDto;
 import com.fastForm.core.services.AuthService;
@@ -23,6 +24,11 @@ public class AuthController {
     @PostMapping("/register")
     public ResponseEntity<ResponseDto> register(@Valid @RequestBody UserDto userDTO) {
         return authService.register(userDTO);
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<ResponseDto> login(@Valid @RequestBody LoginRequestDto loginRequestDto) {
+        return authService.login(loginRequestDto);
     }
 
 }

@@ -31,4 +31,10 @@ public class ResponseDto {
         this.message = message;
     }
 
+    public ResponseDto(Object data, String message, boolean success) {
+        this.data = data;
+        this.message = message;
+        this.success = success;
+    }
+
 }
