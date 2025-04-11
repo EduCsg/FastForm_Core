@@ -30,8 +30,6 @@ public class UserDto {
 
     @NotBlank(message = "Senha é obrigatória")
     @Size(min = 8, max = 100, message = "Senha deve ter entre 8 e 100 caracteres")
-    @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$",
-            message = "A senha deve ter no mínimo 8 caracteres, incluindo letra maiúscula, minúscula, número e caractere especial.")
     @ToString.Exclude
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;

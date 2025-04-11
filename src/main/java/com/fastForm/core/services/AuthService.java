@@ -29,6 +29,10 @@ public class AuthService {
         if (userRepository.existsByEmail(userDTO.getEmail()))
             throw new AuthException(AuthException.AuthErrorTypeEnum.EMAIL_DUPLICATED, "Email já cadastrado.");
 
+        if (!userDTO.getPassword().matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]$"))
+            throw new AuthException(AuthException.AuthErrorTypeEnum.INVALID_CREDENTIALS,
+                    "Senha inválida. A senha deve incluir letras maiúsculas, minúsculas, números e caracteres especiais.");
+
         UserEntity userEntity = modelMapper.map(userDTO, UserEntity.class);
         userRepository.save(userEntity);
 
